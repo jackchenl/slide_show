@@ -1,0 +1,2 @@
+# slide_show
+原生js实现轮播图
