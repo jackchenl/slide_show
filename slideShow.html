@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>手写轮播图控件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    #slide-show{
+        width: 1024px;
+        height: 512px;
+        margin: 0 auto;
+    }
+    #slide-show-box{
+        height: 100%;
+        overflow: hidden;
+    }
+    #slide-show-list{
+        width: 3072px;
+        height: 512px;
+        padding: 0;
+        transition: transform 3s 0s linear;
+    }
+    li{
+        float: left;
+        width: 1024px;
+        height: 512px;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<body>
+    <div id= "slide-show">
+        <div id="slide-show-box">
+            <ul id="slide-show-list">
+                <li class="img1">
+                    <img src="./img/img1.jpg">
+                </li> 
+                <li class="img1">
+                    <img src="./img/img2.jpg">
+                </li> 
+                <li class="img1">
+                    <img src="./img/img3.jpg">
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload=()=>{
+        selfMotion();
+    };
+    function selfMotion() {
+        var imgListBox = document.getElementById("slide-show-list");
+        var imgList = document.getElementsByClassName("img1");
+        imgList = Array.prototype.slice.call(imgList);
+        var len = 1;
+        setInterval(() =>{
+            var width = len*1024 + "px";
+            imgListBox.style.transform = `translate3d(-${width},0px,0px)`;
+            if(len < imgList.length-1){
+                len++;
+            }else if(len = 0){
+                
+            } 
+        }, 5000);
+    };
+</script>
+</html>
