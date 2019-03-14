@@ -17,7 +17,7 @@
         overflow: hidden;
     }
     #slide-show-list{
-        width: 3072px;
+        width: 5120px;
         height: 512px;
         padding: 0;
         transition: transform 3s 0s linear;
@@ -37,6 +37,9 @@
         <div id="slide-show-box">
             <ul id="slide-show-list">
                 <li class="img1">
+                    <img src="./img/img3.jpg">
+                </li>
+                <li class="img1">
                     <img src="./img/img1.jpg">
                 </li> 
                 <li class="img1">
@@ -44,6 +47,9 @@
                 </li> 
                 <li class="img1">
                     <img src="./img/img3.jpg">
+                </li>
+                <li class="img1">
+                    <img src="./img/img1.jpg">
                 </li>
             </ul>
         </div>
@@ -57,16 +63,21 @@
         var imgListBox = document.getElementById("slide-show-list");
         var imgList = document.getElementsByClassName("img1");
         imgList = Array.prototype.slice.call(imgList);
-        var len = 1;
+        
+        var len = 0;
         setInterval(() =>{
-            var width = len*1024 + "px";
-            imgListBox.style.transform = `translate3d(-${width},0px,0px)`;
-            if(len < imgList.length-1){
-                len++;
-            }else if(len = 0){
-                
-            } 
-        }, 5000);
+            len++;
+            imgListBox.style.transform = `translateX(-${len*1024}px)`;
+            imgListBox.style.transition = 'transform 3s ease';
+            console.log('len-1:',len);
+            imgListBox.addEventListener('transitionend', function(){
+                if(len == 4){
+                    len = 1;
+                    imgListBox.style.transition = 'none';
+                    imgListBox.style.transform = `translateX(-${len*1024}px)`;   
+                }
+            }) 
+        }, 4000);
     };
 </script>
 </html>
